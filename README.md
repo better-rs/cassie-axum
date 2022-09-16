@@ -1,17 +1,38 @@
 # cassie_axum
 
+## Dev:
+
+- 服务启动入口: [cassie_web](cassie_web)
+
+> run:
+
+```ruby
+
+# root directory:
+cd cassie-axum/
+
+# run:
+task web:run
+
+```
+
 #### 介绍
+
 基于rust axum 完成web端手脚架 基础权限,用户,缓存,验证,代码生成
 
-rust axum web 是rust开发的web手脚架项目
-前端项目 https://gitee.com/stringlxd/cassie_admin
+rust axum web 是rust开发的web手脚架项目 前端项目 https://gitee.com/stringlxd/cassie_admin
 
 #### 项目讲解
+
 B站：
 https://space.bilibili.com/480402847?spm_id_from=333.788.b_765f7570696e666f.1
+
 #### 项目文档
+
 文档：https://www.yuque.com/heapw/hsr49u/kglmy5
+
 #### 演示地址
+
 http://47.104.64.212/#/login
 
 #### 软件架构
@@ -52,25 +73,19 @@ http://47.104.64.212/#/login
 9. 自定义javascript playground
 
 #### 使用说明
- 前置 安装rust开发环境 遵循官网 
- 如果开启了websocket 请放开20003端口
- 否则连接不到
- 1. 初始化DB，添加配置
-   导入db/cassie_admin.sql文件
-   配置application.yml
- 2. 构建并启动项目
-   cargo build
-   cago run
- 3. 启动前端项目https://gitee.com/stringlxd/cassie_admin
-    默认端口 9999
- 4. 打包 cargo  build --package cassie_web --relaese
 
+前置 安装rust开发环境 遵循官网 如果开启了websocket 请放开20003端口 否则连接不到
 
-
+1. 初始化DB，添加配置 导入db/cassie_admin.sql文件 配置application.yml
+2. 构建并启动项目 cargo build cago run
+3. 启动前端项目https://gitee.com/stringlxd/cassie_admin
+   默认端口 9999
+4. 打包 cargo build --package cassie_web --relaese
 
 #### 框架说明
-管理员账号:admin/123456
-测试账号:lixingdong1/123456
+
+管理员账号:admin/123456 测试账号:lixingdong1/123456
+
 1. https://casbin.org/docs/zh-CN/overview
 2. https://rbatis.github.io/rbatis.io/#/
 3. https://axum.rs/
@@ -85,10 +100,13 @@ String <348040933@qq.com>
 感谢Ribatis作者
 
 #### 提示
+
 代码每天都在更新,大家每天及时更新
+
 #### 更新日志
-2022.7.27
-完成websocket 单聊天室开发
+
+2022.7.27 完成websocket 单聊天室开发
+
 ``` rust
 ///ws 默认端口20003
 ///默认连接地址
@@ -97,12 +115,8 @@ String <348040933@qq.com>
 ///链接如果没有token的话会链接不上
  ```
 
+2022.5.30 event事件宏定义 开发者无需关注事件如何发送触发 只需要在数据库里配置响应脚本即可
 
-
-2022.5.30
-event事件宏定义
-开发者无需关注事件如何发送触发
-只需要在数据库里配置响应脚本即可
 ```rust
 ///api_operation event_bus触发器
 /// #[api_operation("result=false")] 返回值为Result类型 默认是true   false 
@@ -115,9 +129,10 @@ pub async fn nav() -> impl IntoResponse {
     vo
 }
 ```
-2022.5.16
-完成js playground开发
+
+2022.5.16 完成js playground开发
 ![图片](./img.png)
+
 ```renderscript
 //获取数据字典     
 let  data = Cassie.getAllDict();
@@ -135,17 +150,15 @@ let data = Cassie.getUserById(request_model.uid+"");
 console.log(data);
 ```
 
+2022.4.25 微信开发
 
-2022.4.25
-微信开发
 ````````````````````````````````````````````````````````````````
 //微信小程序授权登录开发完成
 //添加模块 cassie_devtools           
 ````````````````````````````````````````````````````````````````
 
+2022.4.17 规则引擎
 
-2022.4.17
-规则引擎
 ````````````````````````````````````````````````````````````````
 //js动态脚本解析 添加自定义v8引擎
 //添加模块 cassie_engine
@@ -153,6 +166,7 @@ console.log(data);
 ````````````````````````````````````````````````````````````````
 
 2022.4.6
+
 ````````````````````````````````````````````````````````````````
 //添加登录日志功能
 //添加操作日志功能
@@ -172,6 +186,7 @@ console.log(data);
 ````````````````````````````````````````````````````````````````
 
 2022.4.5
+
 ````````````````````````````````````````````````````````````````
 //完成eventBus 1.0开发
 //事件基本对象
@@ -191,9 +206,8 @@ pub enum CassieEvent {
 
 ````````````````````````````````````````````````````````````````
 
-
-
 2022.3.31
+
 ````````````````````````````````````````````````````````````````
 完成租户化开发
 配置 application.yml
@@ -204,15 +218,15 @@ tenant:
     - "sys_log_login"
 ````````````````````````````````````````````````````````````````
 
-
-
 2022.3.29
+
 ````````````````````````````````````````````````````````````````
 包结构重新梳理
 替换缓存和tread_loacal实现方式
 ````````````````````````````````````````````````````````````````
 
 2022.3.18
+
 ````````````````````````````````````````````````````````````````
 完成动态表单功能
 mongodb 配置 application.yml
@@ -225,7 +239,9 @@ mongodb_url: "mongodb://localhost:27017"
 4. 表单类型分为 from 和table
 5. entity_id 是业务id
 ````````````````````````````````````````````````````````````````
+
 2022.2.22
+
 ``````````````````````````````````````````````````````````````````````
 完成nacos注册和心跳
 nacos 配置 application.yml
@@ -234,11 +250,13 @@ nacos_server: "http://127.0.0.1:8848/nacos"
 application_name: "cassie_admin"
 ```
 ``````````````````````````````````````````````````````````````````````````````
+
 2022.2.15
+
 ```rust
-  1:更新casbin初始化权限脚本
-  2:添加 resource/:id 资源验证方式
-  3:部分代码重构
+  1: 更新casbin初始化权限脚本
+2: 添加 resource/: id 资源验证方式
+3: 部分代码重构
 ```
 
 
